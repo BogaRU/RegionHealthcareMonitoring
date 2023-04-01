@@ -58,6 +58,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Database\db1.xlsx" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Include="Resources\Database\db1.xlsx" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="EPPlus" Version="6.1.3" />
 	</ItemGroup>
 
