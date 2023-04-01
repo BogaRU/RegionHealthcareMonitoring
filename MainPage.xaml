@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlmazovaProject.MainPage">
+
+    <ContentPage.Resources>
+        <StyleSheet Source="/styles/mystyles.css" />
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Bahnschrift"/>
+                <Setter Property="TextColor" Value="#000000"/>
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+            <Style TargetType="Frame">
+                <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="BackgroundColor" Value="#EEF2FA"/>
+            </Style>
+            <Color x:Key="greenColor">#00B052</Color>
+            <Color x:Key="boxColor">#E7E7E7</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <HorizontalStackLayout Spacing="12" Margin="7">
+            <!--Column: 0-->
+        <VerticalStackLayout Spacing="5">
+                <!--0 - 0-->
+            <Frame>
+                <Grid Padding="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="map.png" Grid.Row="0" WidthRequest="200" HeightRequest="200"/>
+                    <StackLayout Grid.Row="0">
+                        <Label Text="Маршрутизация" HorizontalOptions="Center" FontSize="20"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout HorizontalOptions="Start" Padding="5" Grid.Column="0">
+                                <Label HorizontalOptions="Center" FontSize="44">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="95" TextColor="{StaticResource greenColor}" />
+                                            <Span Text="%" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Text="Профильность" HorizontalOptions="Center" />
+                                <Label HorizontalOptions="Center" FontSize="20">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="-25" TextColor="Red" />
+                                            <Span Text="%" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Text="Динамика переводов" HorizontalOptions="Center" />
+                                <Label HorizontalOptions="Center" FontSize="28">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="50,0" TextColor="Red" />
+                                            <Span Text="%" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Text="ТЛТ догоспитальный" HorizontalOptions="Center" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="End" Padding="3" Grid.Column="1">
+                                <Frame BackgroundColor="PaleGreen" HeightRequest="53" WidthRequest="160" >
+                                    <Label Text="Режим работы 24/7" VerticalOptions="Start"/>
+                                </Frame>
+                                <Label Text="РСЦ - 2" HorizontalOptions="Center" />
+                                <Label Text="ПСО - 6" HorizontalOptions="Center" />
+                                <Label Text="Другие:" HorizontalOptions="Center" TextDecorations="Underline"/>
+                                <Label Text="Кардиодиспансер" HorizontalOptions="Center" />
+                                <Label Text="ФГБУ {имя рек}" HorizontalOptions="Center" />
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <Frame Grid.Row="1" BackgroundColor="#FAFBFD" Margin="2" CornerRadius="3" />
+                    <StackLayout Grid.Row="1" Padding="10">
+                        <Label >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Дефицит АГУ – " />
+                                    <Span Text="да " TextColor="Red" />
+                                    <Span Text="/ 3" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Территориальное планирование " />
+                                    <Span Text="оптимальное" TextColor="{StaticResource greenColor}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="РСЦ по разным профилям – нет" />
+                        <Label >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Все учреждения с АГУ имеют статусы РСЦ – " />
+                                    <Span Text="нет" TextColor="Red" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Приказ соответствует рекомендациям – " />
+                                    <Span Text="да" TextColor="{StaticResource greenColor}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="Межтерриториальное соглашение – нет" />
+                        <Label Text="Наличие кардиодиспансера – да, участие в маршрутизации – да" />
+                        <Label Text="Планы по закупке АГУ: 1 – в РСЦ {имя рек} 2024 год" />
+                    </StackLayout>
+                </Grid>
+            </Frame>
+                <!--0 - 1-->
+            <Frame>
+                <StackLayout HorizontalOptions="FillAndExpand"  Grid.Column="0" Grid.Row="1">
+                    <Label Text="Доступность высокотехнологичной помощи" HorizontalOptions="Center" />
+                    <Label Text="Структура ОКС" HorizontalOptions="Center" />
+                    <Grid Padding="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Column="0" Margin="0,0,2,0" BackgroundColor="#2B6BFF">
+                            <Label Text="38,0% ОКСпST" HorizontalOptions="Center" />
+                        </Frame>
+                        <Frame BackgroundColor="#0E3DA7" Grid.Column="1" Margin="0,0,2,0" >
+                            <Label Text="62,0% ОКСпST" Grid.Column="1" HorizontalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                    <Label Text="Охват ЧКВ пациентов с ОКС" HorizontalOptions="Center"/>
+                    <Grid Padding="5" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame BackgroundColor="Red" Grid.Column="0" BorderColor="Black" CornerRadius="0">
+                            <Label Text="26,5% ОКС" HorizontalOptions="Center" VerticalOptions="Center" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                        <Frame BackgroundColor="Red" Grid.Column="1" BorderColor="Black" CornerRadius="0">
+                            <Label Text="42,2% ОКСпST" HorizontalOptions="Center" VerticalOptions="Center" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                        <Frame BackgroundColor="Red" Grid.Column="2" BorderColor="Black" CornerRadius="0">
+                            <Label Text="18,1% ОКСбпST" HorizontalOptions="Center" VerticalOptions="Center" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                        <Frame BackgroundColor="Red" Grid.Column="3" BorderColor="Black" CornerRadius="0">
+                            <Label Text="62,0% ОКСпST высокого риска" HorizontalOptions="Center" VerticalOptions="Center" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                    </Grid>
+                    <Label Text="Количество ЧКВ, плановые ЧКВ" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Grid Padding="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame BackgroundColor="Red" Grid.Column="0" BorderColor="Black" CornerRadius="0">
+                            <Label Text="163,6 на 100 тыс." HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+                        </Frame>
+                        <Frame BackgroundColor="Red" Grid.Column="1" BorderColor="Black" CornerRadius="0">
+                            <Label Text="13,9 на 100 тыс." HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" />
+                        </Frame>
+                    </Grid>
+                    <Label Text="Летальность РСЦ и ПСО, другие" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Grid Padding="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame BackgroundColor="{StaticResource greenColor}" Grid.Column="0" BorderColor="Black" CornerRadius="0">
+                            <Label Text="5,2%" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+                        </Frame>
+                        <Frame BackgroundColor="Red" Grid.Column="1" BorderColor="Black" CornerRadius="0">
+                            <Label Text="18,3%" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+                        </Frame>
+                        <Frame BackgroundColor="Red" Grid.Column="2" BorderColor="Black" CornerRadius="0">
+                            <Label Text="28,6%" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+                        </Frame>
+                    </Grid>
+                    <Grid Padding="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Доля фармакоинвазивного подхода" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" LineBreakMode="WordWrap"/>
+                        <Frame BackgroundColor="{StaticResource greenColor}" Grid.Column="1" BorderColor="Black" CornerRadius="0" HorizontalOptions="FillAndExpand">
+                            <Label Text="75,4%" HorizontalOptions="Center" VerticalOptions="Center" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                    </Grid>
+                    <BoxView Color="Black" HeightRequest="2" Margin="20,0,20,0"/>
+                    <Label Text="Сердечно-сосудистая хирургия V" HorizontalOptions="Center"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="White" BorderColor="Black">
+                            <Label Text="Операции АКШ" LineBreakMode="WordWrap"/>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource greenColor}" BorderColor="Black">
+                            <Label Text="20,0 на 100 тыс. АКШ в год" HorizontalOptions="Center" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="{StaticResource greenColor}" BorderColor="Black">
+                            <Label Text="35,2% в экстренном порядке" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="3" BackgroundColor="Red" BorderColor="Black">
+                            <Label Text="7,7% летальность" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="White" BorderColor="Black">
+                            <Label Text="Операции на артериях" LineBreakMode="WordWrap"/>
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="{StaticResource greenColor}" BorderColor="Black">
+                            <Label Text="/{цифра}" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="{StaticResource greenColor}" BorderColor="Black">
+                            <Label Text="-" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="3" BackgroundColor="Red" BorderColor="Black">
+                            <Label Text="/{цифра}" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="0" BackgroundColor="White" BorderColor="Black">
+                            <Label Text="Ампутации" />
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="1" BackgroundColor="{StaticResource greenColor}" BorderColor="Black">
+                            <Label Text="/{цифра}" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="2" BackgroundColor="{StaticResource greenColor}" BorderColor="Black">
+                            <Label Text="-" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                        <Frame Grid.Row="2" Grid.Column="3" BackgroundColor="Red" BorderColor="Black">
+                            <Label Text="/{цифра}" LineBreakMode="WordWrap" TextColor="White"/>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+            <!--Column: 1-->
+        <VerticalStackLayout Spacing="5">
+                <!--1 - 0-->
+            <Frame>
+                <StackLayout HorizontalOptions="FillAndExpand" Padding="5">
+                    <Label Text="СТАВРОПОЛЬСКИЙ КРАЙ" HorizontalOptions="Center"/>
+                    <Frame Padding="5" BackgroundColor="#FAFBFD">
+                        <StackLayout>
+                            <Label x:Name="population" FontSize="22" Text="2 780 204 чел.," HorizontalOptions="Center"/>
+                            <Label Text="ОПЖ 2022: 71,66 (12 место в РФ)" HorizontalOptions="Center" />
+                            <Label Text="МИНИСТР: {имя рек}" HorizontalOptions="Start" />
+                            <Label Text="ГВС кардиолог: {имя рек}" HorizontalOptions="Start" />
+                            <Label Text="ГВС ССХ: {имя рек}" HorizontalOptions="Start" />
+                        </StackLayout>
+                    </Frame>
+                    <HorizontalStackLayout>
+                        <Label Text="ЛЕТАЛЬНОСТЬ ОТ ИМ" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100"/>
+                        <Frame BackgroundColor="{StaticResource greenColor}">
+                            <Label Text="{}{цифра}" HorizontalOptions="Center" />
+                        </Frame>
+                        <Label Text="{}{цифра} план" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <BoxView Color="Black" HeightRequest="2" />
+                    <HorizontalStackLayout>
+                        <Label Text="ЛЕТАЛЬНОСТЬ ОТ ОНМК" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100"/>
+                        <Frame BackgroundColor="Red">
+                            <Label Text="{}{цифра}" HorizontalOptions="Center" />
+                        </Frame>
+                        <Label Text="{}{цифра} план" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <BoxView Color="Black" HeightRequest="2" />
+                    <HorizontalStackLayout>
+                        <Label Text="ДН, услуги" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100"/>
+                        <Frame BackgroundColor="Red">
+                            <Label Text="{}{цифра}" HorizontalOptions="Center" />
+                        </Frame>
+                        <Label Text="{}{цифра} план" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <BoxView Color="Black" HeightRequest="2" />
+                    <HorizontalStackLayout>
+                        <Label Text="Летальность ДН" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100"/>
+                        <Frame BackgroundColor="{StaticResource greenColor}">
+                            <Label Text="{}{цифра}" HorizontalOptions="Center" />
+                        </Frame>
+                        <Label Text="{}{цифра} план" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <BoxView Color="Black" HeightRequest="2" />
+                    <HorizontalStackLayout>
+                        <Label Text="ЛЛО" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100"/>
+                        <Frame BackgroundColor="{StaticResource greenColor}">
+                            <Label Text="{}{цифра}" HorizontalOptions="Center" />
+                        </Frame>
+                        <Label Text="{}{цифра} план" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <BoxView Color="Black" HeightRequest="2" />
+                    <HorizontalStackLayout>
+                        <Label Text="РЭВ" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100"/>
+                        <Frame BackgroundColor="Red">
+                            <Label Text="{}{цифра}" HorizontalOptions="Center" />
+                        </Frame>
+                        <Label Text="{}{цифра} план" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <BoxView Color="Black" HeightRequest="2" />
+                    <HorizontalStackLayout>
+                        <Label Text="new" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100"/>
+                        <Frame BackgroundColor="Red">
+                            <Label Text="{}{цифра}" HorizontalOptions="Center" />
+                        </Frame>
+                        <Label Text="{}{цифра} план" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <Label Text="Кадровое обеспечение" HorizontalOptions="Center" WidthRequest="200" />
+                    <Label Text="Обеспеченность, вывод: {текст}" HorizontalOptions="Start" WidthRequest="200"/>
+                    <Label Text="Точки потенциальной кадровой нестабильности: {текст}" HorizontalOptions="Start" WidthRequest="200"/>
+                    <Label Text="Интегративный рейтинг кадровой составляющей: {текст}" HorizontalOptions="Start" WidthRequest="200"/>
+                    <Label Text="Наличие медицинского ВУЗа: {текст}" HorizontalOptions="Start" WidthRequest="200"/>
+                    <Label Text="Участие в научно-практических мероприятиях: {текст}" HorizontalOptions="Start" WidthRequest="200"/>
+                </StackLayout>
+            </Frame>
+                <!--1 - 1-->
+            <Frame>
+                <StackLayout>
+                    <Label Text="ВИМИС   ССЗ" HorizontalOptions="Center" />
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <Frame BorderColor="Black">
+                                <Label Text="Передача данных" />
+                            </Frame>
+                            <Frame BorderColor="Black">
+                                <Label Text="Регион передает" />
+                            </Frame>
+                            <Frame BorderColor="Black">
+                                <Label Text="Ошибки" />
+                            </Frame>
+                            <Frame BorderColor="Black">
+                                <Label Text="Рейтинг региона" />
+                            </Frame>
+                            <Frame BorderColor="Black">
+                                <Label Text="Вывод" />
+                            </Frame>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout>
+                            <Frame BorderColor="Black">
+                                <Label Text="59 из 82 организаций" BackgroundColor="{StaticResource greenColor}"/>
+                            </Frame>
+                            <Frame BorderColor="Black">
+                                <Label Text="9 из 10 видом СЭМД" BackgroundColor="{StaticResource greenColor}"/>
+                            </Frame>
+                            <Frame BorderColor="Black">
+                                <Label Text="39,74%" BackgroundColor="Orange"/>
+                            </Frame>
+                            <Frame BorderColor="Black">
+                                <Label Text="По доле СЭМД 1 категории – 4 место в СКФО, 23 место в РФ" BackgroundColor="{StaticResource greenColor}"/>
+                            </Frame>
+                            <Frame BorderColor="Black">
+                                <Label Text="{}{текст}" />
+                            </Frame>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+        <!--2 - 0-->
+        <Frame>
+            <StackLayout>
+                <Label Text="Амбулаторная помощь"  HorizontalOptions="Center"/>
+                <Label Text="Информированность населения:" HorizontalOptions="Center"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Row="0" Grid.Column="0" BorderColor="Black">
+                        <Label Text="Госпитализация с ОКСпST 2 / 12 часов" />
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="1" BorderColor="Black">
+                        <Label Text="Умершие вне стационара" />
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="2" BorderColor="Black">
+                        <Label Text="Досуточная летальность при ОКС" />
+                    </Frame>
+                    <HorizontalStackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" >
+                        <Frame BackgroundColor="Red" BorderColor="Black" HorizontalOptions="Start">
+                            <Label Text="19,9%" VerticalOptions="Center"/>
+                        </Frame>
+                        <Frame BackgroundColor="Red" BorderColor="Black" VerticalOptions="Center">
+                            <Label Text="45,7%" HorizontalOptions="Center" />
+                        </Frame>
+                    </HorizontalStackLayout>
+                    <Frame Grid.Row ="1" Grid.Column="1" BackgroundColor="Red" BorderColor="Black">
+                        <Label Text="53,9%" FontSize="14" />
+                    </Frame>
+                    <Frame Grid.Row ="1" Grid.Column="2" BackgroundColor="{StaticResource greenColor}" BorderColor="Black">
+                        <Label Text="38,0%" FontSize="14" />
+                    </Frame>
+                </Grid>
+                <Label Text="Установлено на диспансерное наблюдение:" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Column="0" BorderColor="Black">
+                        <Label Text="БСК" />
+                    </Frame>
+                    <Frame Grid.Column="1" BorderColor="Black" BackgroundColor="{StaticResource greenColor}">
+                        <Label Text="68,8%" />
+                    </Frame>
+                    <Frame Grid.Column="2" BorderColor="Black" >
+                        <Label Text="АГ" />
+                    </Frame>
+                    <Frame Grid.Column="3" BorderColor="Black" BackgroundColor="{StaticResource greenColor}">
+                        <Label Text="78,4%" />
+                    </Frame>
+                    <Frame Grid.Column="4" BorderColor="Black">
+                        <Label Text="ИБС" />
+                    </Frame>
+                    <Frame Grid.Column="5" BorderColor="Black" BackgroundColor="{StaticResource greenColor}">
+                        <Label Text="74,2%" />
+                    </Frame>
+                    <Frame Grid.Column="6" BorderColor="Black" >
+                        <Label Text="ИМ" />
+                    </Frame>
+                    <Frame Grid.Column="7" BorderColor="Black" BackgroundColor="{StaticResource greenColor}">
+                        <Label Text="99,6%" />
+                    </Frame>
+                </Grid>
+                <HorizontalStackLayout>
+                    <StackLayout Margin="0,0,10,0">
+                        <Label Text="Объемы инструментальных исследований (на 1 000 взрослого населения):" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Frame Grid.Row="0" Grid.Column="0" BorderColor="Black">
+                                <Label Text="УЗДГ амб." />
+                            </Frame>
+                            <Frame Grid.Row="0" Grid.Column="1" BorderColor="Black" BackgroundColor="Red">
+                                <Label Text="29,5" />
+                            </Frame>
+                            <Frame Grid.Row="0" Grid.Column="2" BorderColor="Black">
+                                <Label Text="ЭКГ" />
+                            </Frame>
+                            <Frame Grid.Row="0" Grid.Column="3" BorderColor="Black" BackgroundColor="Red">
+                                <Label Text="638,6" />
+                            </Frame>
+                            <Frame Grid.Row="1" Grid.Column="0" BorderColor="Black">
+                                <Label Text="ЭХОКГ амб." />
+                            </Frame>
+                            <Frame Grid.Row="1" Grid.Column="1" BorderColor="Black" BackgroundColor="Red">
+                                <Label Text="44,7" />
+                            </Frame>
+                            <Frame Grid.Row="1" Grid.Column="2" BorderColor="Black">
+                                <Label Text="Стресс-ЭХОКГ" />
+                            </Frame>
+                            <Frame Grid.Row="1" Grid.Column="3" BorderColor="Black" BackgroundColor="Red">
+                                <Label Text="0,05" />
+                            </Frame>
+                            <Frame Grid.Row="2" Grid.Column="0" BorderColor="Black">
+                                <Label Text="ХМЭКГ" />
+                            </Frame>
+                            <Frame Grid.Row="2" Grid.Column="1" BorderColor="Black" BackgroundColor="Red">
+                                <Label Text="13,8" />
+                            </Frame>
+                            <Frame Grid.Row="2" Grid.Column="2" BorderColor="Black">
+                                <Label Text="Стресс-ЭКГ" />
+                            </Frame>
+                            <Frame Grid.Row="2" Grid.Column="3" BorderColor="Black" BackgroundColor="Red">
+                                <Label Text="1,6" />
+                            </Frame>
+                            <Frame Grid.Row="3" Grid.Column="0" BorderColor="Black">
+                                <Label Text="СМАД" />
+                            </Frame>
+                            <Frame Grid.Row="3" Grid.Column="1" BorderColor="Black" BackgroundColor="Red">
+                                <Label Text="4,9" />
+                            </Frame>
+                            <Frame Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" BorderColor="Black" />
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Умершие трудоспособного возраста:" />
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.Row="0" Grid.Column="0" BorderColor="Black">
+                                <Label Text="ОКС" />
+                            </Frame>
+                            <Frame Grid.Row="0" Grid.Column="1" BorderColor="Black" BackgroundColor="{StaticResource greenColor}">
+                                <Label Text="16,2%" />
+                            </Frame>
+                            <Frame Grid.Row="1" Grid.Column="0" BorderColor="Black">
+                                <Label Text="ИБС" />
+                            </Frame>
+                            <Frame Grid.Row="1" Grid.Column="1" BorderColor="Black" BackgroundColor="{StaticResource greenColor}">
+                                <Label Text="10,4%" />
+                            </Frame>
+                            <Frame Grid.Row="2" Grid.Column="0" BorderColor="Black">
+                                <Label Text="ОНМК" />
+                            </Frame>
+                            <Frame Grid.Row="2" Grid.Column="1" BorderColor="Black" BackgroundColor="{StaticResource greenColor}">
+                                <Label Text="17,8%" />
+                            </Frame>
+                            <Frame Grid.Row="3" Grid.Column="0" BorderColor="Black">
+                                <Label Text="ЦВБ" />
+                            </Frame>
+                            <Frame Grid.Row="3" Grid.Column="1" BorderColor="Black" BackgroundColor="{StaticResource greenColor}">
+                                <Label Text="10,5%" />
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+                </HorizontalStackLayout>
+                <Label Text="Заболеваемость БСК:" FontSize="18" HorizontalOptions="Center" Margin="0,10,0,0" />
+                <BoxView BackgroundColor="Purple" HorizontalOptions="Start" HeightRequest="160" WidthRequest="600" Margin="0,0,0,0"/>
+                <Label Text="Льготное лекарственное обеспечение" FontSize="18" HorizontalOptions="Center" Margin="0,10,0,0" />
+                
+            </StackLayout>
+        </Frame>
+    </HorizontalStackLayout>
+    
+
+</ContentPage>
